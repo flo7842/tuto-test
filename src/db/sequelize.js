@@ -21,7 +21,7 @@ const courshasUser = CourUserModel(sequelize, DataTypes)
 
   
 const initDb = () => {
-  return sequelize.sync({force: true}).then(_ => {
+  //return sequelize.sync({force: true}).then(_ => {
     // cour.map(pokemon => {
     //   Cour.create({
     //     auteur: pokemon.auteur,
@@ -38,7 +38,7 @@ const initDb = () => {
     
 
     console.log('La base de donnée a bien été initialisée !')
-  })
+  //})
 }
   
 module.exports = { 

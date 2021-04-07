@@ -1,10 +1,10 @@
-const { Pokemon } = require('../db/sequelize')
+const { Cour } = require('../db/sequelize')
 const { Op } = require('sequelize') 
 const auth = require('../auth/auth')
 
 module.exports = (app) => {
-  app.get('/api/pokemons', auth, (req, res) => {
-    if(req.query.name){
+  app.get('/api/cours', auth, (req, res) => {
+    if(req.query.auteur){
       const name = req.query.name
       const limit = parseInt(req.query.limit) || 5
       
@@ -13,27 +13,27 @@ module.exports = (app) => {
         return res.status(400).json({ message })
       }
 
-      return Pokemon.findAndCountAll({ 
+      return Cour.findAndCountAll({ 
         where: {
            name: {
-             [Op.like] : `%${name}%`
+             [Op.like] : `%${id}%`
            }
           },
-          order: ['name'],
+          order: ['auteur'],
           limit: limit
         })
       .then(({count, rows}) => {
-        const message = `Il y a ${count} pokémons qui correspondent au terme de recherche ${name}.`
+        const message = `Il y a ${count} cours qui correspondent au terme de recherche ${auteur}.`
         res.json({ message, data: rows })
       })
     } else{
-      Pokemon.findAll({order: ['name']})
-        .then(pokemons => {
-          const message = 'La liste des pokémons a bien été récupérée.'
-          res.json({ message, data: pokemons })
+        Cour.findAll({order: ['auteur']})
+        .then(cour => {
+          const message = 'La liste des cours a bien été récupérée.'
+          res.json({ message, data: cour })
         })
         .catch(error => {
-          const message = 'La liste des pokémons n\'a pas pu être récupérée. Réessayez dans quelques instants.'
+          const message = 'La liste des cours n\'a pas pu être récupérée. Réessayez dans quelques instants.'
           res.status(500).json({ message, data: error })
         })
     }
