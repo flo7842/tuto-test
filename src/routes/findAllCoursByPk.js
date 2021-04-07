@@ -6,7 +6,7 @@ module.exports = (app) => {
   app.get('/api/cours', auth, (req, res) => {
     if(req.query.auteur){
       const name = req.query.name
-      const limit = parseInt(req.query.limit) || 5
+      
       
       if(name.length < 2){
         const message = "Le nombre de caractère minimum requis pour la recherche est de 2 caractères"
