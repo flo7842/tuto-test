@@ -3,7 +3,6 @@ const CourModel = require('../models/cour')
 const UserModel = require('../models/user')
 const CourUserModel = require('../models/cours_has_user')
 
-const pokemons = require('./mock-pokemon')
 const bcrypt = require('bcrypt')
   
 const sequelize = new Sequelize('tutorama-api', 'root', '', {
@@ -21,7 +20,7 @@ const courshasUser = CourUserModel(sequelize, DataTypes)
 
   
 const initDb = () => {
-  //return sequelize.sync({force: true}).then(_ => {
+  return sequelize.sync({force: true}).then(_ => {
     // cour.map(pokemon => {
     //   Cour.create({
     //     auteur: pokemon.auteur,
@@ -38,7 +37,7 @@ const initDb = () => {
     
 
     console.log('La base de donnée a bien été initialisée !')
-  //})
+  })
 }
   
 module.exports = { 

@@ -6,13 +6,15 @@ module.exports = (app) => {
   app.post('/api/cour', (req, res) => {
     Cour.create({
       auteur: req.body.auteur,
+      image: req.body.image,
+      video: req.body.video,
       etoile: req.body.etoile,
       contenu: req.body.contenu,
       prix: req.body.prix,
       date: req.body.date,
 
     },
-      { fields: ['auteur', 'etoile', 'contenu', 'prix', 'date'] }
+      { fields: ['auteur', 'image', 'video', 'etoile', 'contenu', 'prix', 'date'] }
     )
 
     
