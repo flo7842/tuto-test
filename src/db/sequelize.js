@@ -5,7 +5,7 @@ const CourUserModel = require('../models/cours_has_user')
 
 const bcrypt = require('bcrypt')
   
-const sequelize = new Sequelize('tutorama-api', 'root', '', {
+const sequelize = new Sequelize('skillUp', 'root', '', {
   host: 'localhost',
   dialect: 'mariadb',
   dialectOptions: {

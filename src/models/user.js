@@ -15,25 +15,31 @@ module.exports = (sequelize, DataTypes) => {
       user_password: {
         type: DataTypes.STRING
       },
+      firstname: {
+        type: DataTypes.STRING
+      },
+      lastname: {
+        type: DataTypes.STRING
+      },
       avatar: {
         type: DataTypes.STRING
       },
-      age: {
+      yearsold: {
         type: DataTypes.INTEGER,
       },
-      user_tel: {
+      phone_number: {
         type: DataTypes.STRING
       },
-      num_rue: {
+      street_number: {
         type: DataTypes.INTEGER
       },
       batiment: {
         type: DataTypes.STRING
       },
-      code_postal: {
+      postal_code: {
         type: DataTypes.STRING
       },
-      libelle_adresse: {
+      address_name: {
         type: DataTypes.STRING
       },
       dt_inscription: {
@@ -49,10 +55,6 @@ module.exports = (sequelize, DataTypes) => {
       createdAt: false,
       updatedAt: false
     })
-    User.associate = function(models) {
-      User.belongsTo(models.Cour, {foreignKey: 'courId', as: 'cour'})
-      User.belongsToMany(models.Cours_has_user, {through: 'Cour_has_user', foreignKey: 'userId', as: 'cour'})
-    };
     return User;
   }
   

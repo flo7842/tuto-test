@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      auteur: {
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -18,23 +26,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      video: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      etoile: {
+      rate: {
         type: DataTypes.DECIMAL,
         allowNull: false,
       },
-      contenu: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      prix: {
+      price: {
         type: DataTypes.DECIMAL,
         allowNull: false,
       },
-      date: {
+      datePublish: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
@@ -43,8 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       createdAt: false,
       updatedAt: false
     })
-    Cour.associate = function(models) {
-      Cour.belongsToMany(models.User, {through: 'Cour_has_user', foreignKey: 'courId', as: 'user'})
-    };
+    
     return Cour;
   };
